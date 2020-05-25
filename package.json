@@ -2,7 +2,8 @@
   "name": "dragula",
   "version": "3.7.3",
   "description": "Drag and drop so simple it hurts",
-  "main": "dragula.js",
+  "main": "dist/dragula.js",
+  "files": ["dist/*"],
   "scripts": {
     "build": "npm run scripts && npm run styles",
     "deploy": "npm run build && npm run deployment && npm run sync",
