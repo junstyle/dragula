@@ -435,12 +435,14 @@ function dragula (initialContainers, options) {
         return;
       }
       var moverRect = mover && mover.getBoundingClientRect();
-      dropTarget.insertBefore(item, reference);
-      if (mover && moverRect) {
-        animate(moverRect, mover);
-        animate(itemRect, item);
-      }
-      drake.emit('shadow', item, dropTarget, _source);
+      try{
+        dropTarget.insertBefore(item, reference);
+        if (mover && moverRect) {
+          animate(moverRect, mover);
+          animate(itemRect, item);
+        }
+        drake.emit('shadow', item, dropTarget, _source);
+      }catch(err){}
     }
     function moved (type) { drake.emit(type, item, _lastDropTarget, _source); }
     function over () { if (changed) { moved('over'); } }
