@@ -29,11 +29,10 @@
     "url": "https://github.com/bevacqua/dragula/issues"
   },
   "homepage": "https://github.com/bevacqua/dragula",
-  "dependencies": {
-    "contra": "1.9.4",
-    "crossvent": "1.5.4"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "contra": "1.9.4",
+    "crossvent": "1.5.4",
     "bower": "1.5.2",
     "browserify": "11.0.0",
     "clean-css": "3.3.6",
