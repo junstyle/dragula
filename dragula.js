@@ -50,7 +50,8 @@ function dragula (initialContainers, options) {
     remove: remove,
     destroy: destroy,
     canMove: canMove,
-    dragging: false
+    dragging: false,
+    animate: true
   });
 
   if (o.removeOnSpill === true) {
@@ -437,7 +438,7 @@ function dragula (initialContainers, options) {
       var moverRect = mover && mover.getBoundingClientRect();
       try{
         dropTarget.insertBefore(item, reference);
-        if (mover && moverRect) {
+        if (drake.animate && mover && moverRect) {
           animate(moverRect, mover);
           animate(itemRect, item);
         }
