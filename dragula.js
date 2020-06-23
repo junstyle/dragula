@@ -41,7 +41,7 @@ function dragula (initialContainers, options) {
   if (o.ignoreInputTextSelection === void 0) { o.ignoreInputTextSelection = true; }
   if (o.mirrorContainer === void 0) { o.mirrorContainer = doc.body; }
   if (o.staticClass === void 0) { o.staticClass = ''; }
-  if (o.canDragContainer == void 0) { o.canDragContainer = false; }
+  if (o.canDragContainer === void 0) { o.canDragContainer = false; }
   
   var drake = emitter({
     containers: o.containers,
