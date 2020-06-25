@@ -367,10 +367,11 @@ function dragula (initialContainers, options) {
     // scroll container if any
     if (o.scrollContainer) {
       var offsetY = o.scrollContainer.getBoundingClientRect().y;
-      if (e.clientY-offsetY < 100)
-        o.scrollContainer.scrollTo(0, o.scrollContainer.scrollTop - 6)
-      else if (e.clientY-offsetY > (o.scrollContainer.clientHeight - 100))
-        o.scrollContainer.scrollTo(0, o.scrollContainer.scrollTop + 6)
+      if (e.clientY-offsetY < 100) {
+        o.scrollContainer.scrollTo(0, o.scrollContainer.scrollTop - 6);
+      } else if (e.clientY-offsetY > (o.scrollContainer.clientHeight - 100)) {
+        o.scrollContainer.scrollTo(0, o.scrollContainer.scrollTop + 6);
+      }
     }
 
     if (!_mirror) {
