@@ -42,7 +42,7 @@ function dragula (initialContainers, options) {
   if (o.mirrorContainer === void 0) { o.mirrorContainer = doc.body; }
   if (o.staticClass === void 0) { o.staticClass = ''; }
   if (o.canDragContainer === void 0) { o.canDragContainer = false; }
-  
+
   var drake = emitter({
     containers: o.containers,
     start: manualStart,
@@ -364,6 +364,15 @@ function dragula (initialContainers, options) {
   }
 
   function drag (e) {
+    // scroll container if any
+    if (o.scrollContainer) {
+      var offsetY = o.scrollContainer.getBoundingClientRect().y;
+      if (e.clientY-offsetY < 100)
+        o.scrollContainer.scrollTo(0, o.scrollContainer.scrollTop - 6)
+      else if (e.clientY-offsetY > (o.scrollContainer.clientHeight - 100))
+        o.scrollContainer.scrollTo(0, o.scrollContainer.scrollTop + 6)
+    }
+
     if (!_mirror) {
       return;
     }
@@ -471,6 +480,7 @@ function dragula (initialContainers, options) {
     classes.add(_mirror, 'gu-mirror');
     if (typeof o.mirrorContainer === 'function') { o.mirrorContainer = o.mirrorContainer(); }
     o.mirrorContainer.appendChild(_mirror);
+    if (typeof o.scrollContainer === 'function') { o.scrollContainer = o.scrollContainer(); }
     touchy(documentElement, 'add', 'mousemove', drag);
     classes.add(o.mirrorContainer, 'gu-unselectable');
     drake.emit('cloned', _mirror, _item, 'mirror');
