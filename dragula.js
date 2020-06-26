@@ -411,6 +411,7 @@ function dragula (initialContainers, options) {
       reference = _initialSibling;
       dropTarget = _source;
     } else {
+      // do not remove item
       // if (_copy && parent) {
       //   parent.removeChild(item);
       // }
