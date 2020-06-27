@@ -52,8 +52,12 @@ function dragula (initialContainers, options) {
     destroy: destroy,
     canMove: canMove,
     dragging: false,
-    animate: true
+    animate: true,
   });
+
+  drake.setOptions = function(options) {
+    Object.assign(o, options);
+  };
 
   if (o.removeOnSpill === true) {
     drake.on('over', spillOver).on('out', spillOut);
@@ -192,7 +196,7 @@ function dragula (initialContainers, options) {
 
     return {
       item: item,
-      source: source
+      source: source,
     };
   }
 
@@ -549,17 +553,17 @@ function touchy (el, op, type, fn) {
   var touch = {
     mouseup: 'touchend',
     mousedown: 'touchstart',
-    mousemove: 'touchmove'
+    mousemove: 'touchmove',
   };
   var pointers = {
     mouseup: 'pointerup',
     mousedown: 'pointerdown',
-    mousemove: 'pointermove'
+    mousemove: 'pointermove',
   };
   var microsoft = {
     mouseup: 'MSPointerUp',
     mousedown: 'MSPointerDown',
-    mousemove: 'MSPointerMove'
+    mousemove: 'MSPointerMove',
   };
   if (global.navigator.pointerEnabled) {
     crossvent[op](el, pointers[type], fn);
@@ -585,7 +589,7 @@ function getOffset (el) {
   var rect = el.getBoundingClientRect();
   return {
     left: rect.left + getScroll('scrollLeft', 'pageXOffset'),
-    top: rect.top + getScroll('scrollTop', 'pageYOffset')
+    top: rect.top + getScroll('scrollTop', 'pageYOffset'),
   };
 }
 
@@ -646,7 +650,7 @@ function animate (prevRect, target) {
   var originProps = {transition: target.style.transition, transform: target.style.transform};
   Object.assign(target.style, {
     transition: 'none',
-    transform: 'translate(' + (prevRect.left - currentRect.left) + 'px,' + (prevRect.top - currentRect.top) + 'px)'
+    transform: 'translate(' + (prevRect.left - currentRect.left) + 'px,' + (prevRect.top - currentRect.top) + 'px)',
   });
   target.offsetWidth; // repaint
   Object.assign(target.style, {transition: 'all ' + animateDuration + 'ms', transform: 'translate(0,0)'});
@@ -675,7 +679,7 @@ function getCoord (coord, e) {
   var host = getEventHost(e);
   var missMap = {
     pageX: 'clientX', // IE8
-    pageY: 'clientY' // IE8
+    pageY: 'clientY', // IE8
   };
   if (coord in missMap && !(coord in host) && missMap[coord] in host) {
     coord = missMap[coord];
