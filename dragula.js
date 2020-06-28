@@ -656,7 +656,7 @@ function animate (prevRect, target) {
   Object.assign(target.style, {transition: 'all ' + animateDuration + 'ms', transform: 'translate(0,0)'});
   clearTimeout(target.animated);
   target.animated = setTimeout(function () {
-    Object.assign(target.style, {originProps: originProps});
+    Object.assign(target.style, originProps);
     target.animated = false;
   }, animateDuration);
 }
