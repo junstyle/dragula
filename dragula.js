@@ -372,9 +372,9 @@ function dragula (initialContainers, options) {
     if (o.scrollContainer) {
       var offsetY = o.scrollContainer.getBoundingClientRect().y;
       if (e.clientY - offsetY < 100) {
-        elScrollBy(o.scrollContainer, 0, -6);
+        elScrollBy(o.scrollContainer, 0, -10);
       } else if (e.clientY - offsetY > (o.scrollContainer.clientHeight - 100)) {
-        elScrollBy(o.scrollContainer, 0, 6);
+        elScrollBy(o.scrollContainer, 0, 10);
       }
     }
 
