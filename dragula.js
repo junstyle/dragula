@@ -371,10 +371,10 @@ function dragula (initialContainers, options) {
     // scroll container if any
     if (o.scrollContainer) {
       var offsetY = o.scrollContainer.getBoundingClientRect().y;
-      if (e.clientY-offsetY < 100) {
-        o.scrollContainer.scrollTo(0, o.scrollContainer.scrollTop - 6);
-      } else if (e.clientY-offsetY > (o.scrollContainer.clientHeight - 100)) {
-        o.scrollContainer.scrollTo(0, o.scrollContainer.scrollTop + 6);
+      if (e.clientY - offsetY < 100) {
+        elScrollBy(o.scrollContainer, 0, -6);
+      } else if (e.clientY - offsetY > (o.scrollContainer.clientHeight - 100)) {
+        elScrollBy(o.scrollContainer, 0, 6);
       }
     }
 
@@ -546,6 +546,15 @@ function dragula (initialContainers, options) {
 
   function isCopy (item, container) {
     return typeof o.copy === 'boolean' ? o.copy : o.copy(item, container);
+  }
+
+  function elScrollBy(container, x, y) {
+    if (container === window) {
+      window.scrollBy(x, y);
+    } else {
+      container.scrollLeft += x;
+      container.scrollTop += y;
+    }
   }
 }
 
