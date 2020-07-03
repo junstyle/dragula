@@ -53,11 +53,9 @@ function dragula (initialContainers, options) {
     canMove: canMove,
     dragging: false,
     animate: true,
+    setOptions: setOptions,
+    movable: o.moves,
   });
-
-  drake.setOptions = function(options) {
-    Object.assign(o, options);
-  };
 
   if (o.removeOnSpill === true) {
     drake.on('over', spillOver).on('out', spillOut);
@@ -66,6 +64,10 @@ function dragula (initialContainers, options) {
   events();
 
   return drake;
+
+  function setOptions(options) {
+    Object.assign(o, options);
+  }
 
   function isContainer (el) {
     return drake.containers.indexOf(el) !== -1 || o.isContainer(el);
