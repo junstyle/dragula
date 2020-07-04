@@ -54,7 +54,6 @@ function dragula (initialContainers, options) {
     dragging: false,
     animate: true,
     setOptions: setOptions,
-    movable: o.moves,
   });
 
   if (o.removeOnSpill === true) {
